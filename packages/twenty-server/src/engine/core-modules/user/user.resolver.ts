@@ -54,6 +54,8 @@ import { UserRoleService } from 'src/engine/metadata-modules/user-role/user-role
 import { AccountsToReconnectKeys } from 'src/modules/connected-account/types/accounts-to-reconnect-key-value.type';
 import { streamToBuffer } from 'src/utils/stream-to-buffer';
 
+import { ApiOperation, ApiResponse, ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+
 const getHMACKey = (email?: string, key?: string | null) => {
   if (!email || !key) return null;
 
@@ -62,6 +64,8 @@ const getHMACKey = (email?: string, key?: string | null) => {
   return hmac.update(email).digest('hex');
 };
 
+@ApiTags('User')
+@ApiBearerAuth()
 @UseGuards(WorkspaceAuthGuard)
 @Resolver(() => User)
 @UseFilters(PermissionsGraphqlApiExceptionFilter)
@@ -83,6 +87,8 @@ export class UserResolver {
     private readonly permissionsService: PermissionsService,
   ) {}
 
+  @ApiOperation({ summary: 'Получить текущего пользователя' })
+  @ApiResponse({ status: 200, description: 'Текущий пользователь', type: User })
   @Query(() => User)
   async currentUser(
     @AuthUser() { id: userId }: User,

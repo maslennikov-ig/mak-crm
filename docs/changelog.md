@@ -42,6 +42,7 @@
 - README, infrastructure.md, architecture.md и прочие ключевые документы синхронизированы с реальным стеком и структурой.
 - Все контрольные точки этапа 0 и этапа 1 roadmap отмечены как выполненные.
 - .gitignore проверен и соответствует best practices для монорепозитория Node.js/NestJS.
+- User: доработана существующая сущность (расширение, тесты, Swagger), не создавалась новая. Все изменения только через доработку уже существующих модулей.
 
 ## 2025-05-04
 - Синхронизированы архитектура, инфраструктура, README, роадмап и ТЗ с best practices и гайдлайнами платформы twenty (nx monorepo, React/NestJS, PostgreSQL, TypeScript strict, code style, тесты, i18n, CI/CD, multi-tenant, документация).
@@ -52,6 +53,18 @@
 - Внедрён cross-env во все команды запуска и тестирования в twenty-server/project.json для полной кроссплатформенности (Windows/Linux/Mac).
 - Создан файл .env с базовыми переменными для локальной разработки (REDIS_URL, NODE_ENV и шаблоны для других сервисов).
 - Теперь запуск сервера и тестов не требует ручных правок для Windows.
+
+### Исправлено/Обновлено (05.05.2025)
+- Исправлены и восстановлены все unit-тесты для RoleService и RoleResolver (NestJS)
+- Добавлены моки для всех зависимостей (UserRoleService, WorkspacePermissionsCacheService и др.)
+- Исправлены тесты: updateWorkspaceMemberRole, createOneRole, updateOneRole, deleteOneRole, updateRole, deleteRole
+- Добавлены тесты для методов createMemberRole, createGuestRole, createAdminRole
+- Исправлены синтаксические ошибки в тестах и моках
+- Добавлен и корректно установлен tslib в workspace twenty-server для корректной сборки TypeScript
+- Актуализирована инфраструктура тестирования и покрытия кода
+- Проведена диагностика проблем с Yarn 4 workspaces и зависимостями
+- Покрытие кода по модулю ролей увеличено, все тесты проходят успешно
+- Проведена ручная проверка и запуск всех тестов через jest
 
 ### Исправлено
 - Нет исправлений

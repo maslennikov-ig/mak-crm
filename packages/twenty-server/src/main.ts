@@ -22,6 +22,8 @@ import './instrument';
 import { settings } from './engine/constants/settings';
 import { generateFrontConfig } from './utils/generate-front-config';
 
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+
 const bootstrap = async () => {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     cors: true,
@@ -83,6 +85,16 @@ const bootstrap = async () => {
       maxFiles: 10,
     }),
   );
+
+  // Swagger setup
+  const config = new DocumentBuilder()
+    .setTitle('Twenty CRM API')
+    .setDescription('Документация по API. Включает описание модели User и CRUD-операций.')
+    .setVersion('1.0')
+    .addBearerAuth()
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api/docs', app, document);
 
   // Inject the server url in the frontend page
   generateFrontConfig();

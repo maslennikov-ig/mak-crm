@@ -1,4 +1,3 @@
-
 <br />
 <p align="center">
   <a href="https://www.twenty.com">
@@ -136,6 +135,19 @@ Below are a few features we have implemented to date:
     </picture>
 </p>
 
+## Swagger документация
+
+Swagger UI доступен по адресу: http://localhost:3000/api/docs
+
+Документация покрывает модель User и все основные CRUD-операции, включая примеры, описания параметров, моделей, ответов и ошибок. Для генерации схемы используются декораторы @ApiProperty, @ApiOperation, @ApiResponse и другие из @nestjs/swagger.
+
+### Быстрый старт для Swagger:
+1. Запусти сервер: `yarn workspace twenty-server start`
+2. Перейди по адресу [http://localhost:3000/api/docs](http://localhost:3000/api/docs)
+
+### Пример описания модели User:
+- Все поля пользователя снабжены примерами и описаниями.
+- CRUD-операции пользователя снабжены описаниями, схемами входных и выходных данных.
 
 <br />
 
@@ -167,7 +179,3 @@ Below are a few features we have implemented to date:
 - Join our [Discord](https://discord.gg/cx5n4Jzs57)
 - Improve translations on [Crowdin](https://twenty.crowdin.com/twenty) 
 - [Contributions](https://github.com/twentyhq/twenty/contribute) are, of course, most welcome! 
-
-
-
-

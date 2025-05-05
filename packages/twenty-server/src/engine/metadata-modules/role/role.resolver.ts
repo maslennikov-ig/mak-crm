@@ -7,6 +7,7 @@ import {
   ResolveField,
   Resolver,
 } from '@nestjs/graphql';
+import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 
 import { FeatureFlagKey } from 'src/engine/core-modules/feature-flag/enums/feature-flag-key.enum';
 import { FeatureFlagService } from 'src/engine/core-modules/feature-flag/services/feature-flag.service';
@@ -36,6 +37,8 @@ import { SettingPermissionService } from 'src/engine/metadata-modules/setting-pe
 import { UserRoleService } from 'src/engine/metadata-modules/user-role/user-role.service';
 import { WorkspaceMemberWorkspaceEntity } from 'src/modules/workspace-member/standard-objects/workspace-member.workspace-entity';
 
+@ApiTags('Role')
+@ApiBearerAuth()
 @Resolver(() => RoleDTO)
 @UseGuards(SettingsPermissionsGuard(SettingPermissionType.ROLES))
 @UseFilters(PermissionsGraphqlApiExceptionFilter)
@@ -49,11 +52,15 @@ export class RoleResolver {
     private readonly settingPermissionService: SettingPermissionService,
   ) {}
 
+  @ApiOperation({ summary: 'Получить все роли рабочего пространства' })
+  @ApiResponse({ status: 200, description: 'Список ролей', type: [RoleDTO] })
   @Query(() => [RoleDTO])
   async getRoles(@AuthWorkspace() workspace: Workspace): Promise<RoleDTO[]> {
     return this.roleService.getWorkspaceRoles(workspace.id);
   }
 
+  @ApiOperation({ summary: 'Обновить роль участника рабочего пространства' })
+  @ApiResponse({ status: 200, description: 'Обновленный участник рабочего пространства', type: WorkspaceMember })
   @Mutation(() => WorkspaceMember)
   async updateWorkspaceMemberRole(
     @AuthWorkspace() workspace: Workspace,

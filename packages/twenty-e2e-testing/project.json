@@ -9,7 +9,7 @@
         "cwd": "packages/twenty-e2e-testing",
         "commands": [
           "yarn playwright install",
-          "cp .env.example .env"
+          "copy .env.example .env"
         ]
       }
     },

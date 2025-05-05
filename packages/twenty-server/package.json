@@ -12,7 +12,8 @@
     "database:init:prod": "npx ts-node ./scripts/setup-db.ts && yarn database:migrate:prod",
     "database:migrate:prod": "npx -y typeorm migration:run -d dist/src/database/typeorm/metadata/metadata.datasource && npx -y typeorm migration:run -d dist/src/database/typeorm/core/core.datasource",
     "clickhouse:migrate:prod": "node dist/src/database/clickhouse/migrations/run-migrations.js",
-    "typeorm": "../../node_modules/typeorm/.bin/typeorm"
+    "typeorm": "../../node_modules/typeorm/.bin/typeorm",
+    "test": "jest --runInBand --detectOpenHandles --forceExit"
   },
   "dependencies": {
     "@clickhouse/client": "^1.11.0",
@@ -59,6 +60,7 @@
     "redis": "^4.7.0",
     "ts-morph": "^24.0.0",
     "tsconfig-paths": "^4.2.0",
+    "tslib": "^2.8.1",
     "typeorm": "patch:typeorm@0.3.20#./patches/typeorm+0.3.20.patch",
     "unzipper": "^0.12.3",
     "zod-to-json-schema": "^3.23.1"

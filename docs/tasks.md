@@ -1,22 +1,22 @@
 # Этап 2. Базовая CRM-платформа
 
 ## 2.1 Модели и миграции (TypeORM/TwentyORM)
-- [ ] User (core schema, TypeORM)
-    - [ ] Описать сущность User (id, имя, email, телефон, роль, tenant_id и др.)
-    - [ ] Миграция для создания таблицы users
-    - [ ] Тесты на CRUD (Jest/Supertest, покрытие 80%+)
-    - [ ] Проверить соответствие code-style-guidelines.md
-    - [ ] Проверить структуру по file-structure-guidelines.md
-    - [ ] Строгая типизация (typescript-guidelines.md)
-    - [ ] Документация по структуре User (Swagger, ссылка на ТЗ 2.1.1, 2.1.5)
-- [ ] Role (core schema, TypeORM)
-    - [ ] Описать сущность Role (id, название, описание, права)
-    - [ ] Миграция для создания таблицы roles
-    - [ ] Тесты на CRUD
-    - [ ] Проверить соответствие code-style-guidelines.md
-    - [ ] Проверить структуру по file-structure-guidelines.md
-    - [ ] Строгая типизация
-    - [ ] Документация (Swagger)
+- [x] User (core schema, TypeORM)
+    - [x] Описать сущность User (id, имя, email, телефон, роль, tenant_id и др.)
+    - [x] Миграция для создания таблицы users (добавление полей tenant_id и role)
+    - [x] Тесты на CRUD (Jest/Supertest, покрытие 80%+)
+    - [x] Проверить соответствие code-style-guidelines.md
+    - [x] Проверить структуру по file-structure-guidelines.md
+    - [x] Строгая типизация (typescript-guidelines.md)
+    - [x] Документация по структуре User (Swagger, ссылка на ТЗ 2.1.1, 2.1.5)
+- [x] Role (core schema, TypeORM)
+    - [x] Описать сущность Role (id, название, описание, права)
+    - [x] Миграция для создания таблицы roles
+    - [x] Тесты на CRUD
+    - [x] Проверить соответствие code-style-guidelines.md
+    - [x] Проверить структуру по file-structure-guidelines.md
+    - [x] Строгая типизация
+    - [x] Документация (Swagger)
 - [ ] Client (core schema, TypeORM)
     - [ ] Описать сущность Client (id, ФИО, контакты, источник, tenant_id и др.)
     - [ ] Миграция для clients
